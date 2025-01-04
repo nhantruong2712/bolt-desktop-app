@@ -3,6 +3,7 @@ import useViewport from '~/lib/hooks';
 import { chatStore } from '~/lib/stores/chat';
 import { workbenchStore } from '~/lib/stores/workbench';
 import { classNames } from '~/utils/classNames';
+import { MessageCircle, Code } from 'react-feather';
 
 interface HeaderActionButtonsProps {}
 
@@ -26,7 +27,7 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
             }
           }}
         >
-          <div className="i-bolt:chat text-sm" />
+          <MessageCircle size={14} />
         </Button>
         <div className="w-[1px] bg-bolt-elements-borderColor" />
         <Button
@@ -39,7 +40,7 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
             workbenchStore.showWorkbench.set(!showWorkbench);
           }}
         >
-          <div className="i-ph:code-bold" />
+          <Code size={14} />
         </Button>
       </div>
     </div>

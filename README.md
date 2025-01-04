@@ -44,7 +44,7 @@ bolt.diy was originally started by [Cole Medin](https://www.youtube.com/@ColeMed
 - ✅ xAI Grok Beta Integration (@milutinke)
 - ✅ LM Studio Integration (@karrot0)
 - ✅ HuggingFace Integration (@ahsan3219)
-- ✅ Bolt terminal to see the output of LLM run commands (@thecodacus)
+- ✅ Wizz terminal to see the output of LLM run commands (@thecodacus)
 - ✅ Streaming of code output (@thecodacus)
 - ✅ Ability to revert code to earlier version (@wonderwhy-er)
 - ✅ Cohere Integration (@hasanraiyan)

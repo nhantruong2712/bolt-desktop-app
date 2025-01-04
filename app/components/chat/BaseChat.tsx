@@ -15,6 +15,7 @@ import { SendButton } from './SendButton.client';
 import { APIKeyManager } from './APIKeyManager';
 import Cookies from 'js-cookie';
 import * as Tooltip from '@radix-ui/react-tooltip';
+import { Paperclip, Book, Feather } from 'react-feather';
 
 import styles from './BaseChat.module.scss';
 import { ExportChatButton } from '~/components/chat/chatExportAndImport/ExportChatButton';
@@ -24,7 +25,6 @@ import GitCloneButton from './GitCloneButton';
 
 import FilePreview from './FilePreview';
 import { ModelSelector } from '~/components/chat/ModelSelector';
-import { SpeechRecognitionButton } from '~/components/chat/SpeechRecognition';
 import type { IProviderSetting, ProviderInfo } from '~/types/model';
 import { ScreenshotStateManager } from './ScreenshotStateManager';
 import { toast } from 'react-toastify';
@@ -115,8 +115,11 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
       return {};
     });
     const [modelList, setModelList] = useState(MODEL_LIST);
-    const [isModelSettingsCollapsed, setIsModelSettingsCollapsed] = useState(false);
-    const [isListening, setIsListening] = useState(false);
+
+    /*
+     * const [isModelSettingsCollapsed, setIsModelSettingsCollapsed] = useState(false);
+     * const [isListening, setIsListening] = useState(false);
+     */
     const [recognition, setRecognition] = useState<SpeechRecognition | null>(null);
     const [transcript, setTranscript] = useState('');
 
@@ -195,26 +198,31 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
 
         recognition.onerror = (event) => {
           console.error('Speech recognition error:', event.error);
-          setIsListening(false);
+
+          // setIsListening(false);
         };
 
         setRecognition(recognition);
       }
     }, []);
 
-    const startListening = () => {
-      if (recognition) {
-        recognition.start();
-        setIsListening(true);
-      }
-    };
+    /*
+     * const startListening = () => {
+     *   if (recognition) {
+     *     recognition.start();
+     *     setIsListening(true);
+     *   }
+     * };
+     */
 
-    const stopListening = () => {
-      if (recognition) {
-        recognition.stop();
-        setIsListening(false);
-      }
-    };
+    /*
+     * const stopListening = () => {
+     *   if (recognition) {
+     *     recognition.stop();
+     *     setIsListening(false);
+     *   }
+     * };
+     */
 
     const handleSendMessage = (event: React.UIEvent, messageInput?: string) => {
       if (sendMessage) {
@@ -223,7 +231,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
         if (recognition) {
           recognition.abort(); // Stop current recognition
           setTranscript(''); // Clear transcript
-          setIsListening(false);
+          // setIsListening(false);
 
           // Clear the input by triggering handleInputChange with empty value
           if (handleInputChange) {
@@ -291,7 +299,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     const baseChat = (
       <div
         ref={ref}
-        className={classNames(styles.BaseChat, 'relative flex h-full w-full overflow-hidden')}
+        className={classNames(
+          styles.BaseChat,
+          'relative flex h-full w-full overflow-hidden bg-[url("/grid-lines.png")]',
+        )}
         data-chat-visible={showChat}
       >
         <ClientOnly>{() => <Menu />}</ClientOnly>
@@ -299,8 +310,14 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
           <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
             {!chatStarted && (
               <div id="intro" className="mt-[16vh] max-w-chat mx-auto text-center px-4 lg:px-0">
-                <h1 className="text-3xl lg:text-6xl font-bold text-bolt-elements-textPrimary mb-4 animate-fade-in">
-                  Where ideas begin
+                <a
+                  href=""
+                  className="backdrop-contrast-[0.9] px-4 w-full bg-transparent mb-5 rounded-full border solid border-[#EB6A0D] py-2 flex justify-center items-center text-[#EB6A0D] gap-x-2"
+                >
+                  <Book size={12} /> No coder? Learn how to use Wizz Coder to build apps from zero
+                </a>
+                <h1 className="text-3xl lg:text-[44px] font-bold text-bolt-elements-textPrimary mb-4 animate-fade-in">
+                  What do you want to build?
                 </h1>
                 <p className="text-md lg:text-xl mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
                   Bring ideas to life in seconds or get help on existing projects.
@@ -352,7 +369,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                      */
                   )}
                 >
-                  <svg className={classNames(styles.PromptEffectContainer)}>
+                  {/* <svg className={classNames(styles.PromptEffectContainer)}>
                     <defs>
                       <linearGradient
                         id="line-gradient"
@@ -363,10 +380,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         gradientUnits="userSpaceOnUse"
                         gradientTransform="rotate(-45)"
                       >
-                        <stop offset="0%" stopColor="#b44aff" stopOpacity="0%"></stop>
-                        <stop offset="40%" stopColor="#b44aff" stopOpacity="80%"></stop>
-                        <stop offset="50%" stopColor="#b44aff" stopOpacity="80%"></stop>
-                        <stop offset="100%" stopColor="#b44aff" stopOpacity="0%"></stop>
+                        <stop offset="0%" stopColor="#EB6A0D" stopOpacity="0%"></stop>
+                        <stop offset="40%" stopColor="#EB6A0D" stopOpacity="80%"></stop>
+                        <stop offset="50%" stopColor="#EB6A0D" stopOpacity="80%"></stop>
+                        <stop offset="100%" stopColor="#EB6A0D" stopOpacity="0%"></stop>
                       </linearGradient>
                       <linearGradient id="shine-gradient">
                         <stop offset="0%" stopColor="white" stopOpacity="0%"></stop>
@@ -377,9 +394,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     </defs>
                     <rect className={classNames(styles.PromptEffectLine)} pathLength="100" strokeLinecap="round"></rect>
                     <rect className={classNames(styles.PromptShine)} x="48" y="24" width="70" height="1"></rect>
-                  </svg>
+                  </svg> */}
                   <div>
-                    <div className={isModelSettingsCollapsed ? 'hidden' : ''}>
+                    <div className={''}>
                       <ModelSelector
                         key={provider?.name + ':' + modelList.length}
                         model={model}
@@ -493,7 +510,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         minHeight: TEXTAREA_MIN_HEIGHT,
                         maxHeight: TEXTAREA_MAX_HEIGHT,
                       }}
-                      placeholder="How can Bolt help you today?"
+                      placeholder="Eg: Start a blog with Astro"
                       translate="no"
                     />
                     <ClientOnly>
@@ -518,7 +535,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     <div className="flex justify-between items-center text-sm p-4 pt-2">
                       <div className="flex gap-1 items-center">
                         <IconButton title="Upload file" className="transition-all" onClick={() => handleFileUpload()}>
-                          <div className="i-ph:paperclip text-xl"></div>
+                          <Paperclip size={20} />
                         </IconButton>
                         <IconButton
                           title="Enhance prompt"
@@ -532,18 +549,18 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           {enhancingPrompt ? (
                             <div className="i-svg-spinners:90-ring-with-bg text-bolt-elements-loader-progress text-xl animate-spin"></div>
                           ) : (
-                            <div className="i-bolt:stars text-xl"></div>
+                            <Feather size={20} />
                           )}
                         </IconButton>
 
-                        <SpeechRecognitionButton
+                        {/* <SpeechRecognitionButton
                           isListening={isListening}
                           onStart={startListening}
                           onStop={stopListening}
                           disabled={isStreaming}
-                        />
+                        /> */}
                         {chatStarted && <ClientOnly>{() => <ExportChatButton exportChat={exportChat} />}</ClientOnly>}
-                        <IconButton
+                        {/* <IconButton
                           title="Model Settings"
                           className={classNames('transition-all flex items-center gap-1', {
                             'bg-bolt-elements-item-backgroundAccent text-bolt-elements-item-contentAccent':
@@ -554,9 +571,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           onClick={() => setIsModelSettingsCollapsed(!isModelSettingsCollapsed)}
                           disabled={!providerList || providerList.length === 0}
                         >
-                          <div className={`i-ph:caret-${isModelSettingsCollapsed ? 'right' : 'down'} text-lg`} />
+                          {!isModelSettingsCollapsed ? <ChevronDown size={18}/> : <ChevronRight size={18}/>}
                           {isModelSettingsCollapsed ? <span className="text-xs">{model}</span> : <span />}
-                        </IconButton>
+                        </IconButton> */}
                       </div>
                       {input.length > 3 ? (
                         <div className="text-xs text-bolt-elements-textTertiary">

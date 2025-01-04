@@ -3,6 +3,7 @@ import { TooltipProvider } from '@radix-ui/react-tooltip';
 import WithTooltip from '~/components/ui/Tooltip';
 import { useEditChatDescription } from '~/lib/hooks';
 import { description as descriptionStore } from '~/lib/persistence';
+import { Edit2, Check } from 'react-feather';
 
 export function ChatDescription() {
   const initialDescription = useStore(descriptionStore)!;
@@ -37,9 +38,11 @@ export function ChatDescription() {
               <div className="flex justify-between items-center p-2 rounded-md bg-bolt-elements-item-backgroundAccent">
                 <button
                   type="submit"
-                  className="i-ph:check-bold scale-110 hover:text-bolt-elements-item-contentAccent"
+                  className="bg-transparent hover:text-bolt-elements-item-contentAccent"
                   onMouseDown={handleSubmit}
-                />
+                >
+                  <Check size={16} />
+                </button>
               </div>
             </WithTooltip>
           </TooltipProvider>
@@ -52,12 +55,14 @@ export function ChatDescription() {
               <div className="flex justify-between items-center p-2 rounded-md bg-bolt-elements-item-backgroundAccent ml-2">
                 <button
                   type="button"
-                  className="i-ph:pencil-fill scale-110 hover:text-bolt-elements-item-contentAccent"
+                  className="bg-transparent hover:text-bolt-elements-item-contentAccent"
                   onClick={(event) => {
                     event.preventDefault();
                     toggleEditMode();
                   }}
-                />
+                >
+                  <Edit2 size={16} />
+                </button>
               </div>
             </WithTooltip>
           </TooltipProvider>

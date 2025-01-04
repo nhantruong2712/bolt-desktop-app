@@ -8,6 +8,7 @@ import { workbenchStore } from '~/lib/stores/workbench';
 import { classNames } from '~/utils/classNames';
 import { cubicEasingFn } from '~/utils/easings';
 import { WORK_DIR } from '~/utils/constants';
+import { Terminal } from 'react-feather';
 
 const highlighterOptions = {
   langs: ['shell'],
@@ -186,7 +187,7 @@ const ActionList = memo(({ actions }: ActionListProps) => {
                       {type !== 'start' ? (
                         <div className="i-svg-spinners:90-ring-with-bg"></div>
                       ) : (
-                        <div className="i-ph:terminal-window-duotone"></div>
+                        <Terminal size={16} />
                       )}
                     </>
                   ) : status === 'pending' ? (

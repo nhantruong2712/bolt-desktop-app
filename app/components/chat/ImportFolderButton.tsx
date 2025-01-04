@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { MAX_FILES, isBinaryFile, shouldIncludeFile } from '~/utils/fileUtils';
 import { createChatFromFolder } from '~/utils/folderImport';
 import { logStore } from '~/lib/stores/logs'; // Assuming logStore is imported from this location
+import { Upload } from 'react-feather';
 
 interface ImportFolderButtonProps {
   className?: string;
@@ -120,7 +121,7 @@ export const ImportFolderButton: React.FC<ImportFolderButtonProps> = ({ classNam
         className={className}
         disabled={isLoading}
       >
-        <div className="i-ph:upload-simple" />
+        <Upload size={16} />
         {isLoading ? 'Importing...' : 'Import Folder'}
       </button>
     </>

@@ -11,6 +11,7 @@ import { logger } from '~/utils/logger';
 import { HistoryItem } from './HistoryItem';
 import { binDates } from './date-binning';
 import { useSearchFilter } from '~/lib/hooks/useSearchFilter';
+import { MessageCircle } from 'react-feather';
 
 const menuVariants = {
   closed: {
@@ -153,7 +154,7 @@ export const Menu = () => {
             href="/"
             className="flex gap-2 items-center bg-bolt-elements-sidebar-buttonBackgroundDefault text-bolt-elements-sidebar-buttonText hover:bg-bolt-elements-sidebar-buttonBackgroundHover rounded-md p-2 transition-theme mb-4"
           >
-            <span className="inline-block i-bolt:chat scale-110" />
+            <MessageCircle size={16} />
             Start new chat
           </a>
           <div className="relative w-full">

@@ -3,6 +3,7 @@ import { useGit } from '~/lib/hooks/useGit';
 import type { Message } from 'ai';
 import { detectProjectCommands, createCommandsMessage } from '~/utils/projectCommands';
 import { generateId } from '~/utils/fileUtils';
+import { GitHub } from 'react-feather';
 
 const IGNORE_PATTERNS = [
   'node_modules/**',
@@ -103,7 +104,7 @@ ${file.content}
       title="Clone a Git Repo"
       className="px-4 py-2 rounded-lg border border-bolt-elements-borderColor bg-bolt-elements-prompt-background text-bolt-elements-textPrimary hover:bg-bolt-elements-background-depth-3 transition-all flex items-center gap-2"
     >
-      <span className="i-ph:git-branch" />
+      <GitHub size={16} />
       Clone a Git Repo
     </button>
   );

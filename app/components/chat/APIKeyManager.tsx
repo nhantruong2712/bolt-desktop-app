@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IconButton } from '~/components/ui/IconButton';
 import type { ProviderInfo } from '~/types/model';
+import { Edit2, Check, X, Key, DownloadCloud } from 'react-feather';
 
 interface APIKeyManagerProps {
   provider: ProviderInfo;
@@ -26,11 +27,9 @@ export const APIKeyManager: React.FC<APIKeyManagerProps> = ({ provider, apiKey, 
         <span className="text-sm text-bolt-elements-textSecondary">{provider?.name} API Key:</span>
         {!isEditing && (
           <div className="flex items-center mb-4">
-            <span className="flex-1 text-xs text-bolt-elements-textPrimary mr-2">
-              {apiKey ? '••••••••' : 'Not set (will still work if set in .env file)'}
-            </span>
+            <span className="text-xs text-bolt-elements-textPrimary mr-2">{apiKey ? '••••••••' : 'Not set'}</span>
             <IconButton onClick={() => setIsEditing(true)} title="Edit API Key">
-              <div className="i-ph:pencil-simple" />
+              <Edit2 size={16} />
             </IconButton>
           </div>
         )}
@@ -46,10 +45,10 @@ export const APIKeyManager: React.FC<APIKeyManagerProps> = ({ provider, apiKey, 
             className="flex-1 px-2 py-1 text-xs lg:text-sm rounded border border-bolt-elements-borderColor bg-bolt-elements-prompt-background text-bolt-elements-textPrimary focus:outline-none focus:ring-2 focus:ring-bolt-elements-focus"
           />
           <IconButton onClick={handleSave} title="Save API Key">
-            <div className="i-ph:check" />
+            <Check size={16} />
           </IconButton>
           <IconButton onClick={() => setIsEditing(false)} title="Cancel">
-            <div className="i-ph:x" />
+            <X size={16} />
           </IconButton>
         </div>
       ) : (
@@ -57,7 +56,7 @@ export const APIKeyManager: React.FC<APIKeyManagerProps> = ({ provider, apiKey, 
           {provider?.getApiKeyLink && (
             <IconButton className="ml-auto" onClick={() => window.open(provider?.getApiKeyLink)} title="Edit API Key">
               <span className="mr-2 text-xs lg:text-sm">{provider?.labelForGetApiKey || 'Get API Key'}</span>
-              <div className={provider?.icon || 'i-ph:key'} />
+              {provider?.icon ? <DownloadCloud size={16} /> : <Key size={16} />}
             </IconButton>
           )}
         </>

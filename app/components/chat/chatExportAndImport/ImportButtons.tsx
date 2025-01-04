@@ -1,4 +1,5 @@
 import type { Message } from 'ai';
+import { Upload } from 'react-feather';
 import { toast } from 'react-toastify';
 import { ImportFolderButton } from '~/components/chat/ImportFolderButton';
 
@@ -56,7 +57,7 @@ export function ImportButtons(importChat: ((description: string, messages: Messa
             }}
             className="px-4 py-2 rounded-lg border border-bolt-elements-borderColor bg-bolt-elements-prompt-background text-bolt-elements-textPrimary hover:bg-bolt-elements-background-depth-3 transition-all flex items-center gap-2"
           >
-            <div className="i-ph:upload-simple" />
+            <Upload size={16} />
             Import Chat
           </button>
           <ImportFolderButton

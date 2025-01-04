@@ -61,6 +61,7 @@ const BASE_COLORS = {
     950: '#052E16',
   },
   orange: {
+    main: '#EB6A0D',
     50: '#FFFAEB',
     100: '#FEEFC7',
     200: '#FEDF89',
@@ -93,7 +94,7 @@ const COLOR_PRIMITIVES = {
     white: generateAlphaPalette(BASE_COLORS.white),
     gray: generateAlphaPalette(BASE_COLORS.gray[900]),
     red: generateAlphaPalette(BASE_COLORS.red[500]),
-    accent: generateAlphaPalette(BASE_COLORS.accent[500]),
+    accent: generateAlphaPalette(BASE_COLORS.orange.main),
   },
 };
 

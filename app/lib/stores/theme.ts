@@ -9,17 +9,21 @@ export function themeIsDark() {
   return themeStore.get() === 'dark';
 }
 
-export const DEFAULT_THEME = 'light';
+export const DEFAULT_THEME: Theme = 'dark';
 
 export const themeStore = atom<Theme>(initStore());
 
 function initStore() {
-  if (!import.meta.env.SSR) {
-    const persistedTheme = localStorage.getItem(kTheme) as Theme | undefined;
-    const themeAttribute = document.querySelector('html')?.getAttribute('data-theme');
+  /*
+   * if (!import.meta.env.SSR) {
+   *   const persistedTheme = localStorage.getItem(kTheme) as Theme | undefined;
+   *   const themeAttribute = document.querySelector('html')?.getAttribute('data-theme');
+   */
 
-    return persistedTheme ?? (themeAttribute as Theme) ?? DEFAULT_THEME;
-  }
+  /*
+   *   return persistedTheme ?? (themeAttribute as Theme) ?? DEFAULT_THEME;
+   * }
+   */
 
   return DEFAULT_THEME;
 }

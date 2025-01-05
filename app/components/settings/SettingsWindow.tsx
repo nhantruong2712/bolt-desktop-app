@@ -12,6 +12,7 @@ import DebugTab from './debug/DebugTab';
 import EventLogsTab from './event-logs/EventLogsTab';
 import ConnectionsTab from './connections/ConnectionsTab';
 import DataTab from './data/DataTab';
+import { Book, Database, Key, Link, Star } from 'react-feather';
 
 interface SettingsProps {
   open: boolean;
@@ -24,11 +25,11 @@ export const SettingsWindow = ({ open, onClose }: SettingsProps) => {
   const { debug, eventLogs } = useSettings();
   const [activeTab, setActiveTab] = useState<TabType>('data');
 
-  const tabs: { id: TabType; label: string; icon: string; component?: ReactElement }[] = [
-    { id: 'data', label: 'Data', icon: 'i-ph:database', component: <DataTab /> },
-    { id: 'providers', label: 'Providers', icon: 'i-ph:key', component: <ProvidersTab /> },
-    { id: 'connection', label: 'Connection', icon: 'i-ph:link', component: <ConnectionsTab /> },
-    { id: 'features', label: 'Features', icon: 'i-ph:star', component: <FeaturesTab /> },
+  const tabs: { id: TabType; label: string; icon: ReactElement | string; component?: ReactElement }[] = [
+    { id: 'data', label: 'Data', icon: <Database size={14} />, component: <DataTab /> },
+    { id: 'providers', label: 'Providers', icon: <Key size={14} />, component: <ProvidersTab /> },
+    { id: 'connection', label: 'Connection', icon: <Link size={14} />, component: <ConnectionsTab /> },
+    { id: 'features', label: 'Features', icon: <Star size={14} />, component: <FeaturesTab /> },
     ...(debug
       ? [
           {
@@ -87,12 +88,12 @@ export const SettingsWindow = ({ open, onClose }: SettingsProps) => {
                     onClick={() => setActiveTab(tab.id)}
                     className={classNames(activeTab === tab.id ? styles.active : '')}
                   >
-                    <div className={tab.icon} />
+                    {tab.icon}
                     {tab.label}
                   </button>
                 ))}
                 <div className="mt-auto flex flex-col gap-2">
-                  <a
+                  {/* <a
                     href="https://github.com/stackblitz-labs/bolt.diy"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -100,14 +101,14 @@ export const SettingsWindow = ({ open, onClose }: SettingsProps) => {
                   >
                     <div className="i-ph:github-logo" />
                     GitHub
-                  </a>
+                  </a> */}
                   <a
                     href="https://stackblitz-labs.github.io/bolt.diy/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={classNames(styles['settings-button'], 'flex items-center gap-2')}
                   >
-                    <div className="i-ph:book" />
+                    <Book size={16} />
                     Docs
                   </a>
                 </div>

@@ -1,4 +1,5 @@
 import { memo, forwardRef, type ForwardedRef } from 'react';
+import { X } from 'react-feather';
 import { classNames } from '~/utils/classNames';
 
 type IconSize = 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
@@ -62,7 +63,13 @@ export const IconButton = memo(
             onClick?.(event);
           }}
         >
-          {children ? children : <div className={classNames(icon, getIconSize(size), iconClassName)}></div>}
+          {children ? (
+            children
+          ) : icon === 'i-ph:x' ? (
+            <X size={20} />
+          ) : (
+            <div className={classNames(icon, getIconSize(size), iconClassName)}></div>
+          )}
         </button>
       );
     },

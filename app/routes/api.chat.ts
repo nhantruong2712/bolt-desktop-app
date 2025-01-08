@@ -95,7 +95,7 @@ async function chatAction({ context, request }: ActionFunctionArgs) {
 
         const result = await streamText({
           messages,
-          env: context.cloudflare.env,
+          env: context.cloudflare?.env ?? process?.env ?? {},
           options,
           apiKeys,
           files,
@@ -108,11 +108,9 @@ async function chatAction({ context, request }: ActionFunctionArgs) {
       },
     };
 
-    console.log('contexttttttt 2', context.cloudflare, process.env);
-
     const result = await streamText({
       messages,
-      env: context.cloudflare.env,
+      env: context.cloudflare?.env ?? process?.env ?? {},
       options,
       apiKeys,
       files,

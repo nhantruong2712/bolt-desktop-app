@@ -29,6 +29,14 @@ export abstract class BaseProvider implements ProviderInfo {
     }
 
     const baseUrlKey = this.config.baseUrlKey || defaultBaseUrlKey;
+    console.log({
+      settingsBaseUrl,
+      baseUrlKey,
+      serverEnv,
+      manager,
+    });
+    console.log('process env', process?.env);
+
     let baseUrl =
       settingsBaseUrl ||
       serverEnv?.[baseUrlKey] ||

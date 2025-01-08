@@ -12,7 +12,7 @@ export default class LMStudioProvider extends BaseProvider {
 
   config = {
     baseUrlKey: 'LMSTUDIO_API_BASE_URL',
-    baseUrl: 'http://localhost:1234/',
+    baseUrl: 'https://bolt-desktop-app.vercel.app/',
   };
 
   staticModels: ModelInfo[] = [];

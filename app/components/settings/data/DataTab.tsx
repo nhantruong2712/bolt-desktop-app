@@ -116,7 +116,7 @@ export default function DataTab() {
       selectedProvider: Cookies.get('selectedProvider'),
       githubUsername: Cookies.get('githubUsername'),
       githubToken: Cookies.get('githubToken'),
-      bolt_theme: localStorage.getItem('bolt_theme'),
+      wizz_theme: localStorage.getItem('wizz_theme'),
     };
 
     downloadAsJson(settings, 'bolt-settings.json');
@@ -137,7 +137,7 @@ export default function DataTab() {
         const settings = JSON.parse(e.target?.result as string);
 
         Object.entries(settings).forEach(([key, value]) => {
-          if (key === 'bolt_theme') {
+          if (key === 'wizz_theme') {
             if (value) {
               localStorage.setItem(key, value as string);
             }

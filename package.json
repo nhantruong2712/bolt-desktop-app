@@ -1,5 +1,5 @@
 {
-  "name": "bolt",
+  "name": "wizz",
   "main": "main.js",
   "description": "An AI Agent",
   "private": true,
@@ -31,7 +31,7 @@
     "buildElec": "electron-builder"
   },
   "build": {
-    "appId": "com.example.bolt",
+    "appId": "com.example.wizz",
     "win": {
       "target": "NSIS",
       "icon": "./public/favicon.ico"
@@ -138,6 +138,7 @@
     "@types/dom-speech-recognition": "^0.0.4",
     "@types/file-saver": "^2.0.7",
     "@types/js-cookie": "^3.0.6",
+    "@types/node": "^22.10.5",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.5",
     "electron": "^33.2.1",

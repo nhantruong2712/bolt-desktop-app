@@ -26,6 +26,3 @@
 - miniflare and wrangler error
 - simplified the fix
 - Merge branch 'main' into fix/prompt-enhance
-
-
-**Full Changelog**: [`v0.0.2..v0.0.3`](https://github.com/stackblitz-labs/bolt.diy/compare/v0.0.2...v0.0.3)

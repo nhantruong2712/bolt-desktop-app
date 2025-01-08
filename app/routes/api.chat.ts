@@ -89,13 +89,13 @@ async function chatAction({ context, request }: ActionFunctionArgs) {
         const switchesLeft = MAX_RESPONSE_SEGMENTS - stream.switches;
 
         console.log(`Reached max token limit (${MAX_TOKENS}): Continuing message (${switchesLeft} switches left)`);
-
+        console.log('contexttttttt', context.cloudflare, process.env);
         messages.push({ role: 'assistant', content });
         messages.push({ role: 'user', content: CONTINUE_PROMPT });
 
         const result = await streamText({
           messages,
-          env: context.cloudflare.env,
+          env: context.cloudflare?.env ?? process?.env ?? {},
           options,
           apiKeys,
           files,
@@ -110,7 +110,7 @@ async function chatAction({ context, request }: ActionFunctionArgs) {
 
     const result = await streamText({
       messages,
-      env: context.cloudflare.env,
+      env: context.cloudflare?.env ?? process?.env ?? {},
       options,
       apiKeys,
       files,

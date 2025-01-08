@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-Welcome! This guide provides all the details you need to contribute effectively to the project. Thank you for helping us make **bolt.diy** a better tool for developers worldwide. 💡
+Welcome! This guide provides all the details you need to contribute effectively to the project. Thank you for helping us make a better tool for developers worldwide. 💡
 
 ---
 
@@ -73,7 +73,7 @@ Interested in maintaining and growing the project? Fill out our [Contributor App
 ### 1️⃣ Initial Setup  
 - Clone the repository:  
   ```bash
-  git clone https://github.com/stackblitz-labs/bolt.diy.git
+  git clone
   ```
 - Install dependencies:  
   ```bash

@@ -25,10 +25,11 @@ app.on('ready', () => {
             contextIsolation: true,
             nodeIntegration: false, // For security, nodeIntegration should be false
             preload: path.join(__dirname, 'preload.js'), // Preload script to expose API to renderer
+            icon: path.join(__dirname, 'icons/favicon.ico'),
         },
     });
 
-    mainWindow.loadURL('http://localhost:5173');
+    mainWindow.loadURL('https://bolt-desktop-app.vercel.app');
 
     // Expose __dirname to renderer process via IPC
     ipcMain.handle('get-app-path', () => {
@@ -38,4 +39,8 @@ app.on('ready', () => {
 
 app.on('window-all-closed', () => {
     app.quit();
+});
+
+app.on('ready', () => {
+    app.setAppUserModelId(process.execPath); // Ensure correct app ID
 });

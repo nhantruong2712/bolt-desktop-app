@@ -77,7 +77,7 @@ async function llmCallAction({ context, request }: ActionFunctionArgs) {
             content: `${message}`,
           },
         ],
-        env: context.cloudflare?.env ?? process?.env ?? {},
+        env: context.cloudflare.env,
         apiKeys,
         providerSettings,
       });
@@ -108,7 +108,7 @@ async function llmCallAction({ context, request }: ActionFunctionArgs) {
       const MODEL_LIST = await getModelList({
         apiKeys,
         providerSettings,
-        serverEnv: (context.cloudflare?.env as any) ?? (process.env as any) ?? {},
+        serverEnv: context.cloudflare.env as any,
       });
       const modelDetails = MODEL_LIST.find((m) => m.name === model);
 
@@ -134,7 +134,7 @@ async function llmCallAction({ context, request }: ActionFunctionArgs) {
         ],
         model: providerInfo.getModelInstance({
           model: modelDetails.name,
-          serverEnv: (context.cloudflare?.env as any) ?? (process.env as any) ?? {},
+          serverEnv: context.cloudflare.env as any,
           apiKeys,
           providerSettings,
         }),

@@ -29,7 +29,7 @@ app.on('ready', () => {
         },
     });
 
-    mainWindow.loadURL('https://bolt-desktop-app.vercel.app');
+    mainWindow.loadURL('https://bolt-desktop-app.pages.dev');
 
     // Expose __dirname to renderer process via IPC
     ipcMain.handle('get-app-path', () => {

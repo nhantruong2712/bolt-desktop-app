@@ -37,7 +37,15 @@
       "icon": "./public/favicon.ico"
     },
     "mac": {
-      "icon": "./icons/favicon.ico"
+      "icon": "./public/favicon-1024.icns",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ]
     },
     "linux": {
       "icon": "./icons/favicon.ico"

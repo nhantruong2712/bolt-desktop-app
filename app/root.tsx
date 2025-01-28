@@ -45,7 +45,7 @@ const inlineThemeCode = stripIndents`
     let theme = localStorage.getItem('wizz_theme');
 
     if (!theme) {
-      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark';
     }
 
     document.querySelector('html')?.setAttribute('data-theme', theme);
